@@ -1,14 +1,25 @@
-# Personal Firewall
+# 🔥 Personal Firewall using Python
 
-## Features
-- Packet sniffing using Scapy
-- Rule-based allow/block
-- Logging suspicious packets
-- Optional GUI for live monitoring
-- Optional iptables integration for Linux
+## 🧠 Objective
+Develop a lightweight **Personal Firewall** that filters network traffic based on user-defined rules and logs suspicious activity.
 
-## Usage
-1. Edit rules.json to add your rules.
-2. Run firewall: `python3 firewall.py`
-3. Optional GUI: `python3 gui.py`
-4. Check firewall.log for blocked/suspicious packets.
+---
+
+## 🧰 Tools & Technologies
+- **Python 3**
+- **Scapy** – for packet sniffing and analysis  
+- **Tkinter (optional)** – for GUI monitoring  
+- **Npcap (Windows)** – required for packet sniffing  
+- **Logging Module** – to record suspicious packets  
+- **Windows Firewall / netsh (optional)** – for actual blocking
+
+---
+
+## ⚙️ Features
+✅ Real-time packet sniffing  
+✅ Custom rule-based filtering (Allow / Block lists)  
+✅ Suspicious packet logging  
+✅ CLI + Optional GUI interface  
+✅ Cross-platform (Windows / Linux, with small tweaks)
+
+---
