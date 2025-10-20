@@ -1,0 +1,58 @@
+Personal Firewall - Execution Steps (Windows)
+
+1. Prerequisites:
+   - Python 3 installed on your system.
+   - Install required Python packages: scapy, tk.
+   - For Scapy packet sniffing on Windows, install Npcap:
+     https://nmap.org/npcap/
+   - Optional: Run Command Prompt or PowerShell as Administrator if you want to enable Windows firewall blocking.
+
+2. Install dependencies:
+   Open a terminal in the project folder and run:
+   pip install -r requirements.txt
+
+3. Edit rules:
+   Open 'rules.json' and add your allow/block rules:
+   Example:
+   {
+     "allow": [
+       {"ip": "192.168.1.1", "port": 80, "protocol": "TCP"}
+     ],
+     "block": [
+       {"ip": "192.168.1.100", "port": 22, "protocol": "TCP"}
+     ]
+   }
+
+4. Run the firewall (packet sniffing and logging):
+   Open a terminal and run:
+   python firewall.py
+
+   - The firewall will start capturing all incoming/outgoing packets.
+   - Suspicious or blocked packets are logged in 'firewall.log'.
+
+5. Generate network traffic to test:
+   Open another terminal and run:
+   ping 8.8.8.8
+   curl http://example.com
+   - These packets will be captured by the firewall.
+
+6. Check logs:
+   Open 'firewall.log' in Notepad or any text editor to see captured packets:
+   Suspicious packets are logged like:
+   2025-10-20 15:10:12,345 - Suspicious packet: IP / TCP 192.168.1.5:54321 -> 8.8.8.8:80
+
+7. Optional GUI monitor:
+   To see live packet summaries, run:
+   python gui.py
+   - A window will display packets as they are captured in real-time.
+
+8. Optional packet blocking on Windows:
+   - Run Python as Administrator.
+   - Use the functions in 'iptables_helper.py' (converted to Windows netsh commands) to block specific IPs/ports based on your rules.
+
+9. Stopping the firewall:
+   - Press Ctrl + C in the terminal running firewall.py to stop sniffing.
+
+10. Notes:
+   - The firewall currently logs packets but does not block traffic unless Windows firewall rules are applied.
+   - Ensure Npcap is installed for Scapy to capture packets on Windows.
